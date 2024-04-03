@@ -1,0 +1,102 @@
+.spell-card {
+  display: flex;
+  flex-direction: row;
+  max-width: 385px;
+  width: 100vw;
+  height: 75px;
+  font-size: 18px;
+  background-color: #161E35;
+  border-radius: 15px;
+  align-items: center;
+  gap: 10px;
+  padding-left: 5px;
+  box-sizing: border-box;
+  cursor: pointer;
+  position: relative;
+}
+
+.spell-level {
+  display: block;
+  padding: 10px;
+  border-right: 1px solid #293659;
+  /* height: 25px; */
+  box-sizing: border-box;
+}
+
+.card-container {
+  width: 83%;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.spell-description {
+  width: 100%;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+.spell-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.spell-name_en {
+  opacity: 0.5;
+}
+
+.spell-school {
+  opacity: 0.5;
+}
+
+.components {
+  opacity: 0.5;
+}
+
+.additional {
+  display: block;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  background-color: #3071E7;
+  border-radius: 3px;
+}
+
+.spell-info_container {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.card-button {
+  position: absolute;
+  top: -5px;
+  right: 25px;
+  padding: 0;
+  border: none;
+  background: none;
+  width: 30px;
+  height: 50px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 5;
+  cursor: pointer;
+  transition: all 0.5s linear;
+}
+
+.save-button {
+  background-image: url(../../images/button-save.svg);
+}
+
+.delete-button {
+  background-image: url(../../images/button-delete.svg);
+}
+
+.card-button:hover {
+  scale: 1.1;
+}

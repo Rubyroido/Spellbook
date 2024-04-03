@@ -1,0 +1,31 @@
+.header {
+  height: 100px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  position: fixed;
+  background-color: #161E35;
+  z-index: 100;
+  top: 0;
+  left: 0;
+}
+
+.link {
+  padding: 15px 30px;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+  font-size: 24px;
+  border: 1px solid #3071E7;
+  box-sizing: border-box;
+  border-radius: 15px;
+  background-color: #161E35;
+  transition: all linear 0.5s;
+}
+
+.link:hover {
+  scale: 1.05;
+}

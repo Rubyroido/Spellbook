@@ -1,0 +1,28 @@
+.spells-group {
+  max-width: 1300px;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.spells-level {
+  width: 91%;
+  height: 65px;
+  display: block;
+  background-color: #161E35;
+  padding: 20px 30px;
+  box-sizing: border-box;
+  border-radius: 15px;
+}
+
+.spells-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  list-style: none;
+  gap: 10px;
+  padding: 0;
+  justify-content: center;
+}

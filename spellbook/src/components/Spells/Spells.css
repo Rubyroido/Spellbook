@@ -1,0 +1,14 @@
+.spells {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.no-spells {
+  display: block;
+  margin: 50px;
+  font-size: 30px;
+}

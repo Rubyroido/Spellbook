@@ -1,0 +1,25 @@
+* {
+  margin: 0;
+  color: white;
+}
+
+body {
+  background-color: #080C25;
+  position: relative;
+}
+
+body::-webkit-scrollbar {
+  width: 12px;               /* ширина scrollbar */
+}
+body::-webkit-scrollbar-track {
+  background: #161E35;        /* цвет дорожки */
+}
+body::-webkit-scrollbar-thumb {
+  background-color: #3071E7;    /* цвет плашки */
+  border-radius: 20px;       /* закругления плашки */
+  border: 2px solid  #161E35;  /* padding вокруг плашки */
+}
+
+.app {
+  padding-top: 120px;
+}
