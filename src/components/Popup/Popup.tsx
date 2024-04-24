@@ -6,21 +6,23 @@ import { saveSpell, deleteSpell } from '../../store/spellsSlice';
 
 function Popup({ spell, onClose }: { spell: any, onClose: any }) {
   const dispatch = useAppDispatch();
-  const dialogRef = useRef<HTMLDialogElement>(null);
-  const savedSpells = useAppSelector(state => state.spells.spells).filter((spell:any) => spell !== null);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null); 
+  const savedSpells = useAppSelector(state => state.spells.spells).filter((spell: any) => spell !== null);
   const [isSaved, setIsSaved] = useState(false);
 
   useEffect(() => {
     const dialog = dialogRef.current;
-    if (dialog && spell !== null) {
-      dialog.showModal();
+    const overlay = overlayRef.current;
+    if (dialog && spell !== null && overlay) {
       dialog.classList.add('popup_active');
+      overlay.classList.add('overlay_active');
       document.body.style.overflow = 'hidden';
-      const isSpellSaved = savedSpells.some((item:any) => item.id === spell.id);
+      const isSpellSaved = savedSpells.some((item: any) => item.id === spell.id);
       setIsSaved(isSpellSaved)
-    } else if (dialog) {
-      dialog.close();
+    } else if (dialog && overlay) {
       dialog.classList.remove('popup_active');
+      overlay.classList.remove('overlay_active');
       document.body.style.overflow = 'unset';
     }
   }, [spell])
@@ -40,42 +42,45 @@ function Popup({ spell, onClose }: { spell: any, onClose: any }) {
   }
 
   return (
-    <dialog ref={dialogRef} className='popup'>
-      <h2>{spell?.name + ` [${spell?.nameEN}]`}</h2>
-      <span>{(spell?.level === 0 ? 'Заговор' : `${spell?.level} уровень`) + ', ' + spell?.school}</span>
-      <span><b>Время накладывания:</b>{' ' + spell?.castTime}</span>
-      <span><b>Дистанция:</b>{' ' + spell?.distance}</span>
-      <span><b>Компоненты:</b>{' ' + ((spell?.verbal) ? 'В ' : '') + ((spell?.somatic) ? 'С ' : '') + ((spell?.material) ? 'М ' : '')}</span>
-      <span><b>Длительность:</b>{' ' + spell?.duration}</span>
-      <span><b>Классы:</b>{' ' + spell?.classes}</span>
-      {
-        spell?.archetypes ? <span><b>Архетипы:</b>{' ' + spell?.archetypes}</span> : false
-      }
-      {
-        spell?.source.map((item: any) => {
-          return (
-            <span><b>Источник:</b>{' ' + item.name}</span>
-          )
-        })
-      }
-      <div className='description'>
+    <>
+      <div ref={overlayRef} className='overlay' onClick={handleClose}/>
+      <div ref={dialogRef} className='popup'>
+        <h2>{spell?.name + ` [${spell?.nameEN}]`}</h2>
+        <span>{(spell?.level === 0 ? 'Заговор' : `${spell?.level} уровень`) + ', ' + spell?.school}</span>
+        <span><b>Время накладывания:</b>{' ' + spell?.castTime}</span>
+        <span><b>Дистанция:</b>{' ' + spell?.distance}</span>
+        <span><b>Компоненты:</b>{' ' + ((spell?.verbal) ? 'В ' : '') + ((spell?.somatic) ? 'С ' : '') + ((spell?.material) ? 'М ' : '')}</span>
+        <span><b>Длительность:</b>{' ' + spell?.duration}</span>
+        <span><b>Классы:</b>{' ' + spell?.classes}</span>
         {
-          spell?.descriprion.map((string: string) => {
+          spell?.archetypes ? <span><b>Архетипы:</b>{' ' + spell?.archetypes}</span> : false
+        }
+        {
+          spell?.source.map((item: any) => {
             return (
-              <p>{string}</p>
+              <span><b>Источник:</b>{' ' + item.name}</span>
             )
           })
         }
+        <div className='description'>
+          {
+            spell?.descriprion.map((string: string) => {
+              return (
+                <p>{string}</p>
+              )
+            })
+          }
+        </div>
+        <div className='popup-controls'>
+          <button className='button button-close' onClick={handleClose}>закрыть</button>
+          {
+            isSaved ?
+              <button className='button button-delete' onClick={handleDelete}>удалить</button> :
+              <button className='button button-save' onClick={handleSave}>сохранить</button>
+          }
+        </div>
       </div>
-      <div className='popup-controls'>
-        <button className='button button-close' onClick={handleClose}>закрыть</button>
-        {
-          isSaved ?
-            <button className='button button-delete' onClick={handleDelete}>удалить</button> :
-            <button className='button button-save' onClick={handleSave}>сохранить</button>
-        }
-      </div>
-    </dialog>
+    </>
   )
 }
 

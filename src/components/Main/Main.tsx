@@ -11,7 +11,7 @@ function Main({ onSpellClick }: any) {
     <main className="main">
       <Routes>
         <Route path='/' element={<Spells spellsList={spellsList} onSpellClick={onSpellClick} />}></Route>
-        <Route path='/saved' element={<Spells spellsList={savedSpells} onSpellClick={onSpellClick}/>}></Route>
+        <Route path='/saved' element={<Spells spellsList={savedSpells} onSpellClick={onSpellClick} />}></Route>
       </Routes>
     </main>
   );

@@ -8,18 +8,24 @@ body {
   position: relative;
 }
 
-body::-webkit-scrollbar {
-  width: 12px;               /* ширина scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
 }
-body::-webkit-scrollbar-track {
-  background: #161E35;        /* цвет дорожки */
+
+/* Стили для ползунка */
+::-webkit-scrollbar-thumb {
+  background-color: #3071E7; /* Цвет ползунка */
+  border-radius: 20px; /* Скругленные углы */
+  border: 2px solid #161E35; /* Граница ползунка */
 }
-body::-webkit-scrollbar-thumb {
-  background-color: #3071E7;    /* цвет плашки */
-  border-radius: 20px;       /* закругления плашки */
-  border: 2px solid  #161E35;  /* padding вокруг плашки */
+
+/* Стили для фона */
+::-webkit-scrollbar-track {
+  background: #161E35; /* Цвет фона */
 }
 
 .app {
   padding-top: 120px;
+  position: relative;
 }
