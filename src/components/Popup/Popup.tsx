@@ -3,13 +3,17 @@ import './Popup.css';
 import { useEffect, useRef, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { saveSpell, deleteSpell } from '../../store/spellsSlice';
+import { usePreventScroll } from '@react-aria/overlays';
+
 
 function Popup({ spell, onClose }: { spell: any, onClose: any }) {
   const dispatch = useAppDispatch();
   const dialogRef = useRef<HTMLDivElement>(null);
-  const overlayRef = useRef<HTMLDivElement>(null); 
+  const overlayRef = useRef<HTMLDivElement>(null);
   const savedSpells = useAppSelector(state => state.spells.spells).filter((spell: any) => spell !== null);
   const [isSaved, setIsSaved] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(true);
+  usePreventScroll({isDisabled})
 
   useEffect(() => {
     const dialog = dialogRef.current;
@@ -19,11 +23,13 @@ function Popup({ spell, onClose }: { spell: any, onClose: any }) {
       overlay.classList.add('overlay_active');
       document.body.style.overflow = 'hidden';
       const isSpellSaved = savedSpells.some((item: any) => item.id === spell.id);
+      setIsDisabled(false)
       setIsSaved(isSpellSaved)
     } else if (dialog && overlay) {
       dialog.classList.remove('popup_active');
       overlay.classList.remove('overlay_active');
       document.body.style.overflow = 'unset';
+      setIsDisabled(true)
     }
   }, [spell])
 
@@ -41,9 +47,10 @@ function Popup({ spell, onClose }: { spell: any, onClose: any }) {
     setIsSaved(false)
   }
 
+
   return (
     <>
-      <div ref={overlayRef} className='overlay' onClick={handleClose}/>
+      <div ref={overlayRef} className='overlay' onClick={handleClose} />
       <div ref={dialogRef} className='popup'>
         <h2>{spell?.name + ` [${spell?.nameEN}]`}</h2>
         <span>{(spell?.level === 0 ? 'Заговор' : `${spell?.level} уровень`) + ', ' + spell?.school}</span>
