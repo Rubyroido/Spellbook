@@ -1,10 +1,10 @@
 import './SpellsGroup.css';
-import { spellsList } from '../../utils/spellsList';
+// import { spellsList } from '../../utils/spellsList';
 import SpellCard from '../SpellCard/SpellCard';
 import { useLocation } from 'react-router-dom';
 import { useAppSelector } from '../../hooks/hooks';
 
-function SpellsGroup({ level, onSpellClick }: { level: number, onSpellClick: any }) {
+function SpellsGroup({ level, onSpellClick, spellsList }: { level: number, onSpellClick: any, spellsList?: any }) {
   const location = useLocation();
   const savedSpells = useAppSelector(state => state.spells.spells).filter((spell: any) => spell !== null);
   let currentSpells;
@@ -13,7 +13,7 @@ function SpellsGroup({ level, onSpellClick }: { level: number, onSpellClick: any
       return spell.level === level;
     })
   } else {
-    currentSpells = spellsList.filter((spell) => {
+    currentSpells = spellsList.filter((spell: any) => {
       return spell.level === level;
     })
   }
