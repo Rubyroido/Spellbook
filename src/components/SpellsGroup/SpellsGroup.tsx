@@ -1,5 +1,4 @@
 import './SpellsGroup.css';
-// import { spellsList } from '../../utils/spellsList';
 import SpellCard from '../SpellCard/SpellCard';
 import { useAppSelector } from '../../hooks/hooks';
 

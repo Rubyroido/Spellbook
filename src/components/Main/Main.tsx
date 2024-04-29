@@ -20,16 +20,16 @@ function Main({ onSpellClick }: any) {
       setCurrentSpells(spellsList)
     }
   }, [query])
-  
-  function submitSearch(string:string) {
+
+  function submitSearch(string: string) {
     setQuery(string)
   }
 
   return (
     <main className="main">
       <Routes>
-        <Route path='/' element={<Spells spellsList={currentSpells} onSpellClick={onSpellClick} submitSearch={submitSearch}/>}></Route>
-        <Route path='/saved' element={<Spells spellsList  ={savedSpells} onSpellClick={onSpellClick} />}></Route>
+        <Route path='/' element={<Spells spellsList={currentSpells} onSpellClick={onSpellClick} submitSearch={submitSearch} />}></Route>
+        <Route path='/saved' element={<Spells spellsList={savedSpells} onSpellClick={onSpellClick} />}></Route>
       </Routes>
     </main>
   );

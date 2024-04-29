@@ -14,6 +14,10 @@
   text-align: center;
 }
 
+.search-form {
+  display: flex;
+}
+
 .search-input {
   height: 40px;
   width: 30vw;
@@ -50,7 +54,6 @@
 
 @media screen and (max-width:600px) {
   .search-form {
-    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
