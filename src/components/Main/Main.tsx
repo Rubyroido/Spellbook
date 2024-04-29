@@ -10,17 +10,6 @@ function Main({ onSpellClick }: any) {
   const [currentSpells, setCurrentSpells] = useState(spellsList);
   const [query, setQuery] = useState('');
 
-  // function searchSpells(query: string) {
-  //   if (query !== '') {
-  //     const foundSpells = spellsList.filter(spell => {
-  //       return spell.name.toLowerCase().includes(query.toLowerCase()) || spell.nameEN.toLowerCase().includes(query.toLowerCase())
-  //     })
-  //     setCurrentSpells(foundSpells)
-  //   } else {
-  //     setCurrentSpells(spellsList)
-  //   }
-  // }
-
   useEffect(() => {
     if (query !== '') {
       const foundSpells = spellsList.filter(spell => {

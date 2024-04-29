@@ -4,19 +4,19 @@ import SpellCard from '../SpellCard/SpellCard';
 import { useLocation } from 'react-router-dom';
 import { useAppSelector } from '../../hooks/hooks';
 
-function SpellsGroup({ level, onSpellClick, spellsList }: { level: number, onSpellClick: any, spellsList?: any }) {
+function SpellsGroup({ level, onSpellClick, currentSpells }: { level: number, onSpellClick: any, currentSpells?: any }) {
   const location = useLocation();
   const savedSpells = useAppSelector(state => state.spells.spells).filter((spell: any) => spell !== null);
-  let currentSpells;
-  if (location.pathname === '/saved') {
-    currentSpells = savedSpells.filter((spell: any) => {
-      return spell.level === level;
-    })
-  } else {
-    currentSpells = spellsList.filter((spell: any) => {
-      return spell.level === level;
-    })
-  }
+  // let currentSpells;
+  // if (location.pathname === '/saved') {
+  //   currentSpells = savedSpells.filter((spell: any) => {
+  //     return spell.level === level;
+  //   })
+  // } else {
+  //   currentSpells = spellsList.filter((spell: any) => {
+  //     return spell.level === level;
+  //   })
+  // }
 
   return (
     <div className="spells-group">
