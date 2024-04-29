@@ -79,11 +79,11 @@ function Popup({ spell, onClose }: { spell: any, onClose: any }) {
           }
         </div>
         <div className='popup-controls'>
-          <button className='button button-close' onClick={handleClose}>закрыть</button>
+          <button className='button button-close' onClick={handleClose}>Закрыть</button>
           {
             isSaved ?
-              <button className='button button-delete' onClick={handleDelete}>удалить</button> :
-              <button className='button button-save' onClick={handleSave}>сохранить</button>
+              <button className='button button-delete' onClick={handleDelete}>Удалить</button> :
+              <button className='button button-save' onClick={handleSave}>Сохранить</button>
           }
         </div>
       </div>

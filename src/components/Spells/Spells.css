@@ -1,7 +1,7 @@
 .spells {
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  /* gap: 25px; */
   justify-content: center;
   align-items: center;
   margin: auto;
@@ -11,6 +11,7 @@
   display: block;
   margin: 50px;
   font-size: 30px;
+  text-align: center;
 }
 
 .search-input {
@@ -29,7 +30,7 @@
 .search-button {
   height: 40px;
   width: 80px;
-  background-color:#3071E7;
+  background-color: #3071E7;
   border: none;
   border-radius: 0 10px 10px 0;
   cursor: pointer;
@@ -40,9 +41,32 @@
   margin-left: 10px;
   height: 40px;
   width: 80px;
-  background-color:#3071E7;
+  background-color: #3071E7;
   border: none;
   border-radius: 10px;
   cursor: pointer;
   font-size: 16px;
+}
+
+@media screen and (max-width:600px) {
+  .search-form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .search-input {
+    width: 90%;
+    border-radius: 10px;
+  }
+
+  .search-button {
+    border-radius: 10px;
+    margin-top: 10px;
+  }
+
+  .reset-button {
+    margin-top: 10px;
+  }
 }

@@ -1,10 +1,10 @@
 .spells-group {
   max-width: 1300px;
-  width: 100vw;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px;
+  margin-top: 25px;
 }
 
 .spells-level {
@@ -15,6 +15,7 @@
   padding: 20px 30px;
   box-sizing: border-box;
   border-radius: 15px;
+  margin-bottom: 15px;
 }
 
 .spells-list {
@@ -22,7 +23,6 @@
   flex-direction: row;
   flex-wrap: wrap;
   list-style: none;
-  gap: 10px;
-  padding: 0;
+  padding: 5px;
   justify-content: center;
 }
