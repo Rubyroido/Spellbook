@@ -11,7 +11,7 @@
   width: 91%;
   height: 65px;
   display: block;
-  background-color: #161E35;
+  background-color: var(--additional-bg);
   padding: 20px 30px;
   box-sizing: border-box;
   border-radius: 15px;

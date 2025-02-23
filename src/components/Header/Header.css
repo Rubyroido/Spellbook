@@ -6,7 +6,7 @@
   justify-content: center;
   align-items: center;
   position: fixed;
-  background-color: #161E35;
+  background-color: var(--additional-bg);
   z-index: 100;
   top: 0;
   left: 0;
@@ -18,10 +18,10 @@
   cursor: pointer;
   text-align: center;
   font-size: 24px;
-  border: 1px solid #3071E7;
+  border: 1px solid var(--blue-color);
   box-sizing: border-box;
   border-radius: 15px;
-  background-color: #161E35;
+  background-color: var(--additional-bg);
   transition: all linear 0.5s;
 }
 
@@ -31,6 +31,10 @@
 
 .link:hover {
   scale: 1.05;
+}
+
+.link_active {
+  background-color: var(--blue-color);
 }
 
 

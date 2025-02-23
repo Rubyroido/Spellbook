@@ -1,9 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import spellsReducer from './spellsSlice'
+import filterSlice from "./filterSlice";
+import selectedSpellSlice from "./selectedSpellSlice";
 
 export const store = configureStore({
   reducer: {
-    spells: spellsReducer
+    spells: spellsReducer,
+    filter: filterSlice,
+    selectedSpell: selectedSpellSlice
   }
 })
 

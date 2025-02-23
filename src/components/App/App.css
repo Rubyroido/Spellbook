@@ -1,11 +1,19 @@
+html {
+  --blue-color: #3071E7;
+  --main-bg: #080C25;
+  --additional-bg: #161E35;
+  --light-bg: #293659;
+  --main-white: white;
+}
+
 * {
   margin: 0;
-  color: white;
+  color: var(--main-white);
   /* outline: 1px solid red; */
 }
 
 body {
-  background-color: #080C25;
+  background-color: var(--main-bg);
   position: relative;
 }
 
@@ -16,14 +24,18 @@ body {
 
 /* Стили для ползунка */
 ::-webkit-scrollbar-thumb {
-  background-color: #3071E7; /* Цвет ползунка */
-  border-radius: 20px; /* Скругленные углы */
-  border: 2px solid #161E35; /* Граница ползунка */
+  background-color: var(--blue-color);
+  /* Цвет ползунка */
+  border-radius: 20px;
+  /* Скругленные углы */
+  border: 2px solid var(--additional-bg);
+  /* Граница ползунка */
 }
 
 /* Стили для фона */
 ::-webkit-scrollbar-track {
-  background: #161E35; /* Цвет фона */
+  background: var(--additional-bg);
+  /* Цвет фона */
 }
 
 .app {

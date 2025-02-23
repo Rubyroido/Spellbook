@@ -1,22 +1,28 @@
 import './SpellsGroup.css';
 import SpellCard from '../SpellCard/SpellCard';
 import { useAppSelector } from '../../hooks/hooks';
+import ISpell from '../../interface/ISpell';
 
-function SpellsGroup({ level, onSpellClick, currentSpells }: { level: number, onSpellClick: any, currentSpells?: any }) {
-  const savedSpells = useAppSelector(state => state.spells.spells).filter((spell: any) => spell !== null);
+interface ISPellGroup {
+  level: number,
+  currentSpells?: ISpell[]
+}
+
+function SpellsGroup({ level, currentSpells }: ISPellGroup) {
+  const savedSpells = useAppSelector(state => state.spells.spells).filter((spell: ISpell) => spell !== null);
 
   return (
     <div className="spells-group">
       <h2 className='spells-level'>{level === 0 ? 'Заговоры' : level + ' уровень'}</h2>
       <ul className='spells-list'>
-        {
-          currentSpells.map((spell: any) => {
+        {currentSpells &&
+          currentSpells.map((spell: ISpell, index: number) => {
             if (spell) {
               let isSaved;
-              savedSpells.some((item: any) => item.id === spell.id) ? isSaved = true : isSaved = false;
+              savedSpells.some((item: ISpell) => item.id === spell.id) ? isSaved = true : isSaved = false;
               return (
-                <li >
-                  <SpellCard spell={spell} isSaved={isSaved} key={spell.id} onSpellClick={onSpellClick} />
+                <li key={index}>
+                  <SpellCard spell={spell} isSaved={isSaved} key={spell.id} />
                 </li>
               )
             } else {

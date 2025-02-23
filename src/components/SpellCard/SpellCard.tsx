@@ -1,23 +1,29 @@
 import "./SpellCard.css";
 import ISpell from "../../interface/ISpell";
 import { useAppDispatch } from '../../hooks/hooks';
+import { selectSpell } from "../../store/selectedSpellSlice";
 import { saveSpell, deleteSpell } from '../../store/spellsSlice';
 
-export default function SpellCard({ spell, onSpellClick, isSaved }: { spell: ISpell, onSpellClick: any, isSaved:boolean }) {
+interface ISpellCard {
+  spell: ISpell,
+  isSaved: boolean
+}
+
+export default function SpellCard({ spell, isSaved }: ISpellCard) {
   const dispatch = useAppDispatch();
 
   function handleClick() {
-    onSpellClick(spell)
+    dispatch(selectSpell(spell))
   }
 
-  function handleButtonClick(event: any) {
-    event.stopPropagation()
-    if(isSaved) {
-      dispatch(deleteSpell(spell))
+  function handleButtonClick(event: React.MouseEvent<HTMLButtonElement>) {
+    event.stopPropagation();
+    if (isSaved) {
+      dispatch(deleteSpell(spell.id));
     } else {
-      dispatch(saveSpell(spell))
+      dispatch(saveSpell(spell));
     }
-  }
+  }  
 
   return (
     <div className="spell-card" onClick={handleClick}>
@@ -44,7 +50,7 @@ export default function SpellCard({ spell, onSpellClick, isSaved }: { spell: ISp
           </div>
         </div>
       </div>
-      <button className={`card-button ${isSaved?'delete-button':'save-button'}`} onClick={handleButtonClick}></button>
+      <button className={`card-button ${isSaved ? 'delete-button' : 'save-button'}`} onClick={handleButtonClick}></button>
     </div>
   )
 }

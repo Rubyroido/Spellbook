@@ -5,7 +5,7 @@ import { spellsList } from '../../utils/spellsList';
 import { useAppSelector } from '../../hooks/hooks';
 import { useState, useEffect } from 'react';
 
-function Main({ onSpellClick }: any) {
+function Main() {
   const savedSpells = useAppSelector((state) => state.spells.spells)
   const [currentSpells, setCurrentSpells] = useState(spellsList);
   const [query, setQuery] = useState('');
@@ -22,14 +22,14 @@ function Main({ onSpellClick }: any) {
   }, [query])
 
   function submitSearch(string: string) {
-    setQuery(string)
+    setQuery(string.trim())
   }
 
   return (
     <main className="main">
       <Routes>
-        <Route path='/' element={<Spells spellsList={currentSpells} onSpellClick={onSpellClick} submitSearch={submitSearch} />}></Route>
-        <Route path='/saved' element={<Spells spellsList={savedSpells} onSpellClick={onSpellClick} />}></Route>
+        <Route path='/' element={<Spells spellsList={currentSpells} submitSearch={submitSearch} />}></Route>
+        <Route path='/saved' element={<Spells spellsList={savedSpells} />}></Route>
       </Routes>
     </main>
   );

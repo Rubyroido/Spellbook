@@ -1,4 +1,6 @@
-interface ISpell {
+import ISource from "./ISource"
+
+export default interface ISpell {
   id: number,
   name: string,
   nameEN: string,
@@ -15,9 +17,7 @@ interface ISpell {
   archetypes: string,
   ritual: boolean,
   concentration: boolean,
-  source: Array<any>,
-  descriprion: Array<any>,
+  source: ISource[],
+  description: Array<string>,
   levelUp: string
 }
-
-export default ISpell;

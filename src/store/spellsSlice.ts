@@ -1,30 +1,36 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import ISpell from "../interface/ISpell";
+import { RootState } from "./store";
 
-const initialState = {
-  spells: JSON.parse(localStorage.getItem('saved-spells') || '[]')
+interface SavedSpellsState {
+  spells: ISpell[];
 }
 
+const initialState: SavedSpellsState = {
+  spells: JSON.parse(localStorage.getItem("saved-spells") || "[]"),
+};
+
 export const spellsSlice = createSlice({
-  name: 'spells',
+  name: "spells",
   initialState,
   reducers: {
-    saveSpell(state, action) {
-      const newSpell = action.payload;
-      if (!state.spells[newSpell.id]) {
-        state.spells[newSpell.id] = newSpell;
-        localStorage.setItem('saved-spells', JSON.stringify(state.spells))
+    saveSpell(state, action: PayloadAction<ISpell>) {
+      if (!state.spells.some((spell) => spell.id === action.payload.id)) {
+        state.spells = [...state.spells, action.payload];
+        localStorage.setItem("saved-spells", JSON.stringify(state.spells));
       }
     },
-    deleteSpell(state, action) {
-      const spellToDelete = action.payload;
-      if (state.spells[spellToDelete.id]) {
-        state.spells[spellToDelete.id] = null;
-        localStorage.setItem('saved-spells', JSON.stringify(state.spells))
-      }
-    }
-  }
-})
+    deleteSpell(state, action: PayloadAction<number>) {
+      state.spells = state.spells.filter((spell) => spell.id !== action.payload);
+      localStorage.setItem("saved-spells", JSON.stringify(state.spells));
+    },
+  },
+});
+
+export const selectSortedSpells = createSelector(
+  (state: RootState) => state.spells.spells,
+  (spells) => spells.filter((spell) => spell !== null).sort((a, b) => a.id - b.id)
+);
 
 export const { saveSpell, deleteSpell } = spellsSlice.actions;
-
 export default spellsSlice.reducer;
