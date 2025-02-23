@@ -7,7 +7,7 @@ interface SavedSpellsState {
 }
 
 const initialState: SavedSpellsState = {
-  spells: JSON.parse(localStorage.getItem("saved-spells") || "[]"),
+  spells: JSON.parse(localStorage.getItem("spells") || "[]"),
 };
 
 export const spellsSlice = createSlice({
@@ -17,12 +17,12 @@ export const spellsSlice = createSlice({
     saveSpell(state, action: PayloadAction<ISpell>) {
       if (!state.spells.some((spell) => spell.id === action.payload.id)) {
         state.spells = [...state.spells, action.payload];
-        localStorage.setItem("saved-spells", JSON.stringify(state.spells));
+        localStorage.setItem("spells", JSON.stringify(state.spells));
       }
     },
     deleteSpell(state, action: PayloadAction<number>) {
       state.spells = state.spells.filter((spell) => spell.id !== action.payload);
-      localStorage.setItem("saved-spells", JSON.stringify(state.spells));
+      localStorage.setItem("spells", JSON.stringify(state.spells));
     },
   },
 });

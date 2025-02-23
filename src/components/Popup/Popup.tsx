@@ -12,9 +12,8 @@ function Popup() {
 
   const spell = useAppSelector((state) => state.selectedSpell.selectedSpell);
   const savedSpells = useAppSelector((state) =>
-    state.spells.spells.filter((s) => s !== null)
+    state.spells.spells
   );
-
   const [isSaved, setIsSaved] = useState(false);
   const [isDisabled, setIsDisabled] = useState(true);
   usePreventScroll({ isDisabled });
@@ -54,8 +53,8 @@ function Popup() {
     }
   }
 
-  if (!spell) return null;
-
+  // if (!spell) return null;
+  console.log(spell)
   return (
     <>
       <div ref={overlayRef} className="overlay" onClick={handleClose} />
