@@ -1,25 +1,24 @@
 .filter {
   margin-top: 20px;
-  width: 50%;
+  width: 100%;
+  max-width: 600px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
+  gap: 10px;
 }
 
 .filter__item {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   padding: 8px 12px;
   border: 2px solid var(--blue-color);
   border-radius: 8px;
   cursor: pointer;
-  user-select: none;
   font-size: 16px;
   transition: all 0.3s ease;
   background: var(--white-color);
   color: var(--white-color);
+  text-align: center;
 }
 
 .filter__item.active {
@@ -29,4 +28,18 @@
 
 .filter__checkbox {
   display: none;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .filter {
+    max-width: 550px;
+  }
+
+}
+
+@media (max-width: 480px) {
+  .filter {
+    max-width: 95%;
+  }
 }
